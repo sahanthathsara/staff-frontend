@@ -23,12 +23,15 @@ export const AuthProvider = ({ children }) => {
         case "cook":
           navigate("/cook-dashboard");
           break;
-        case "cleaner":
-          navigate("/cleaner-dashboard");
-          break;
         case "hr":
           navigate("/hr-dashboard");
           break;
+        case "cleaning":
+          navigate("/cleaner-dashboard");
+          break;
+       // case "hr":
+         // navigate("/hr-dashboard");
+         // break;
         default:
           navigate("/login");
       }
@@ -50,12 +53,15 @@ export const AuthProvider = ({ children }) => {
       case "cook":
         navigate("/cook-dashboard");
         break;
-      case "cleaner":
-        navigate("/cleaner-dashboard");
-        break;
       case "hr":
         navigate("/hr-dashboard");
         break;
+      case "cleaning":
+        navigate("/cleaner-dashboard");
+        break;
+      //case "hr":
+       // navigate("/hr-dashboard");
+        //break;
       default:
         navigate("/login");
     }

@@ -63,8 +63,8 @@ const Signup = () => {
         >
           <option value={1}>Manager</option>
           <option value={2}>Cook</option>
-          <option value={3}>Cleaner</option>
-          <option value={4}>HR</option>
+          <option value={3}>HR</option>
+          <option value={4}>Cleaner</option>
         </select>
         <button
           type="submit"

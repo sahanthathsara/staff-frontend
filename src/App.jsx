@@ -31,14 +31,15 @@ function App() {
 
 export default App;*/
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+/*import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ManagerDashboard from "./pages/ManagerDashboard";
 import CookDashboard from "./pages/CookDashboard";
-import CleanerDashboard from "./pages/CleanerDashboard";
 import HrDashboard from "./pages/HrDashboard";
+import CleanerDashboard from "./pages/CleanerDashboard";
+//import HrDashboard from "./pages/HrDashboard";
 
 function App() {
   return (
@@ -49,11 +50,81 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/manager-dashboard" element={<ManagerDashboard />} />
           <Route path="/cook-dashboard" element={<CookDashboard />} />
-          <Route path="/cleaner-dashboard" element={<CleanerDashboard />} />
           <Route path="/hr-dashboard" element={<HrDashboard />} />
+          <Route path="/cleaner-dashboard" element={<CleanerDashboard />} />
+          
         </Routes>
       </AuthProvider>
     </BrowserRouter>
+  );
+}
+
+export default App;*/
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
+
+// Pages
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ManagerDashboard from "./pages/ManagerDashboard";
+import CookDashboard from "./pages/CookDashboard";
+import HrDashboard from "./pages/HrDashboard";
+import CleanerDashboard from "./pages/CleanerDashboard";
+
+// Protected Route
+import ProtectedRoute from "./components/ProtectedRoute";
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
+          {/* Protected dashboards */}
+          <Route
+            path="/manager-dashboard"
+            element={
+              <ProtectedRoute>
+                <ManagerDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/cook-dashboard"
+            element={
+              <ProtectedRoute>
+                <CookDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/hr-dashboard"
+            element={
+              <ProtectedRoute>
+                <HrDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/cleaner-dashboard"
+            element={
+              <ProtectedRoute>
+                <CleanerDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Default route */}
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
