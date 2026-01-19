@@ -69,6 +69,9 @@ import ManagerDashboard from "./pages/ManagerDashboard";
 import CookDashboard from "./pages/CookDashboard";
 import CleanerDashboard from "./pages/CleanerDashboard";
 import HrDashboard from "./pages/HrDashboard";
+import StaffList from "./pages/staff/StaffList";
+import AddStaff from "./pages/staff/AddStaff"
+
 
 function App() {
   return (
@@ -81,6 +84,9 @@ function App() {
           <Route path="/cook-dashboard" element={<CookDashboard />} />
           <Route path="/cleaner-dashboard" element={<CleanerDashboard />} />
           <Route path="/hr-dashboard" element={<HrDashboard />} />
+          <Route path="/staff" element={<StaffList />} />
+          <Route path="/staff/add" element={<AddStaff />} />
+
         </Routes>
       </AuthProvider>
     </BrowserRouter>
