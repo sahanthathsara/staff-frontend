@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { login as loginService } from "../services/authService";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { auth, saveAuth } = useContext(AuthContext);
@@ -82,7 +83,9 @@ const Login = () => {
       </form>
 
       <p>
-        New user? <a href="/signup">Sign up</a>
+        New user? <Link to="/signup" className="text-blue-600 underline">
+       Sign up
+      </Link>
       </p>
     </div>
   );

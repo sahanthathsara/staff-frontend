@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
-// ✅ import StaffList from pages/staff
 import StaffList from "./staff/StaffList";
 
 const ManagerDashboard = () => {
@@ -15,30 +13,24 @@ const ManagerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen p-6">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <div>
-          <h1 className="text-3xl font-bold">Manager Dashboard</h1>
-          <p className="text-lg">Welcome, {auth.name || "Manager"}!</p>
-          <p className="text-md text-gray-600">
-            Your role: {auth.role || "Manager"}
-          </p>
-        </div>
+    <div style={{ padding: "20px" }}>
+      <h1>Manager Dashboard</h1>
 
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 text-white py-2 px-4 rounded"
-        >
-          Logout
-        </button>
-      </div>
+      <p>
+        Welcome, <strong>{auth.name}</strong>
+      </p>
+      <p>
+        Role: <strong>{auth.role}</strong>
+      </p>
 
-      {/* Staff Management Section */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">Staff Management</h2>
-        <StaffList />
-      </div>
+      <hr style={{ margin: "20px 0" }} />
+
+      {/* THIS is what you were missing */}
+      <StaffList />
+
+      <br />
+
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
