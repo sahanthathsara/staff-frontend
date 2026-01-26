@@ -3,52 +3,55 @@ import { addStaff } from "../../services/staffService";
 import { useNavigate } from "react-router-dom";
 
 const AddStaff = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
-    role: "",
+    password: "",
+    roleId: "",
   });
 
-  const navigate = useNavigate();
-
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addStaff(form);
-    navigate("/staff");
+    navigate("/manager-dashboard");
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Add Staff</h1>
+    <div style={{ padding: "20px" }}>
+      <h2>Add Staff</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-3 max-w-md">
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" onChange={handleChange} required />
+        <br /><br />
+
+        <input name="email" placeholder="Email" onChange={handleChange} required />
+        <br /><br />
+
         <input
-          name="name"
-          placeholder="Name"
-          className="border p-2 w-full"
+          type="password"
+          name="password"
+          placeholder="Password"
           onChange={handleChange}
           required
         />
-        <input
-          name="email"
-          placeholder="Email"
-          className="border p-2 w-full"
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="role"
-          placeholder="Role"
-          className="border p-2 w-full"
-          onChange={handleChange}
-          required
-        />
-        <button className="bg-green-600 text-white px-4 py-2 rounded">
-          Save
-        </button>
+        <br /><br />
+
+        <select name="roleId" onChange={handleChange} required>
+          <option value="">Select Role</option>
+          <option value="1">Manager</option>
+          <option value="2">Cook</option>
+          <option value="3">Cleaner</option>
+          <option value="4">HR</option>
+        </select>
+
+        <br /><br />
+        <button type="submit">Add Staff</button>
       </form>
     </div>
   );

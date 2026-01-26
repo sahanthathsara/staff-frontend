@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import StaffList from "./staff/StaffList";
 
 const HrDashboard = () => {
   const { auth, logout } = useContext(AuthContext);
@@ -12,16 +13,24 @@ const HrDashboard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl font-bold mb-4">HR Dashboard</h1>
-      <p className="text-lg mb-2">Welcome, {auth.name || "Guest"}!</p>
-      <p className="text-lg mb-4">Your role: {auth.role || "HR"}</p>
-      <button
-        onClick={handleLogout}
-        className="bg-red-600 text-white py-2 px-4 rounded"
-      >
-        Logout
-      </button>
+    <div style={{ padding: "20px" }}>
+      <h1>HR Dashboard</h1>
+
+      <p>
+        Welcome, <strong>{auth.name}</strong>
+      </p>
+      <p>
+        Role: <strong>{auth.role}</strong>
+      </p>
+
+      <hr />
+
+      {/* HR can VIEW staff only */}
+      <StaffList />
+
+      <br />
+
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

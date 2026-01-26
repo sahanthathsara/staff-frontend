@@ -85,7 +85,7 @@ function App() {
           <Route path="/cleaner-dashboard" element={<CleanerDashboard />} />
           <Route path="/hr-dashboard" element={<HrDashboard />} />
           <Route path="/staff" element={<StaffList />} />
-          
+          <Route path="/staff/add" element={<AddStaff />} />
 
         </Routes>
       </AuthProvider>

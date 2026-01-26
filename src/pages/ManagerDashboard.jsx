@@ -30,6 +30,11 @@ const ManagerDashboard = () => {
 
       <br />
 
+      <button onClick={() => navigate("/staff/add")}>
+        Add Staff
+      </button>
+
+
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
