@@ -3,55 +3,51 @@ import { getAllStaff } from "../../services/staffService";
 
 const StaffList = () => {
   const [staff, setStaff] = useState([]);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    const loadStaff = async () => {
-      try {
-        const data = await getAllStaff();
-        setStaff(data);
-      } catch {
-        setError("Failed to load staff");
-      }
-    };
-
     loadStaff();
   }, []);
 
-  if (error) {
-    return <p className="text-red-600">{error}</p>;
-  }
+  const loadStaff = async () => {
+    const data = await getAllStaff();
+    setStaff(data);
+  };
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-4">Staff List</h2>
+    <div style={{ padding: "20px" }}>
+      <h2 style={{ marginBottom: "15px" }}>Staff List</h2>
 
-      {staff.length === 0 ? (
-        <p className="text-gray-500">No staff found.</p>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full border border-gray-300 rounded">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="p-2 border">Name</th>
-                <th className="p-2 border">Email</th>
-                <th className="p-2 border">Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {staff.map((s) => (
-                <tr key={s.id} className="hover:bg-gray-50">
-                  <td className="p-2 border">{s.name}</td>
-                  <td className="p-2 border">{s.email}</td>
-                  <td className="p-2 border">{s.roleName}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr style={{ background: "#f4f4f4" }}>
+            <th style={th}>Name</th>
+            <th style={th}>Email</th>
+            <th style={th}>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {staff.map((s) => (
+            <tr key={s.id}>
+              <td style={td}>{s.name}</td>
+              <td style={td}>{s.email}</td>
+              <td style={td}>{s.roleName}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
+};
+
+const th = {
+  padding: "10px",
+  border: "1px solid #ddd",
+  textAlign: "left",
+};
+
+const td = {
+  padding: "10px",
+  border: "1px solid #ddd",
 };
 
 export default StaffList;

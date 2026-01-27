@@ -7,37 +7,50 @@ const ManagerDashboard = () => {
   const { auth, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
   return (
     <div style={{ padding: "20px" }}>
       <h1>Manager Dashboard</h1>
 
-      <p>
-        Welcome, <strong>{auth.name}</strong>
-      </p>
-      <p>
-        Role: <strong>{auth.role}</strong>
-      </p>
+      <p><b>Welcome:</b> {auth.name}</p>
+      <p><b>Role:</b> {auth.role}</p>
+
+      <button
+        onClick={() => navigate("/staff/add")}
+        style={btnPrimary}
+      >
+        + Add Staff
+      </button>
+
+      
 
       <hr style={{ margin: "20px 0" }} />
 
-      {/* THIS is what you were missing */}
       <StaffList />
-
-      <br />
-
-      <button onClick={() => navigate("/staff/add")}>
-        Add Staff
+      <button
+        onClick={logout}
+        style={btnDanger}
+      >
+        Logout
       </button>
-
-
-      <button onClick={handleLogout}>Logout</button>
     </div>
   );
+};
+
+const btnPrimary = {
+  marginRight: "10px",
+  padding: "8px 12px",
+  background: "#2563eb",
+  color: "#fff",
+  border: "none",
+  cursor: "pointer",
+};
+
+const btnDanger = {
+  padding: "8px 12px",
+  background: "#dc2626",
+  color: "#fff",
+  border: "none",
+  cursor: "pointer",
 };
 
 export default ManagerDashboard;
