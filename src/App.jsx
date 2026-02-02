@@ -77,6 +77,12 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+         <div
+        className="min-h-screen bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/bg.jpg')",
+        }}
+      >
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -88,6 +94,7 @@ function App() {
           <Route path="/staff/add" element={<AddStaff />} />
 
         </Routes>
+        </div>
       </AuthProvider>
     </BrowserRouter>
   );
