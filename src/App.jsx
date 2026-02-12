@@ -77,13 +77,18 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-         <div
-        className="min-h-screen bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/src/assets/bg.jpg')",
-        }}
-      >
-        <Routes>
+        <div
+  className="min-h-screen bg-cover bg-center relative"
+  style={{
+    backgroundImage: "url('/src/assets/bg.jpg')",
+  }}
+>
+  {/* Dark + Blur Overlay */}
+  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+  {/* Page Content */}
+  <div className="relative z-10">
+    <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/manager-dashboard" element={<ManagerDashboard />} />
@@ -93,8 +98,9 @@ function App() {
           <Route path="/staff" element={<StaffList />} />
           <Route path="/staff/add" element={<AddStaff />} />
 
-        </Routes>
-        </div>
+          </Routes>
+  </div>
+</div>
       </AuthProvider>
     </BrowserRouter>
   );
