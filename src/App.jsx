@@ -83,8 +83,13 @@ function App() {
     backgroundImage: "url('/src/assets/bg.jpg')",
   }}
 >
-  {/* Dark + Blur Overlay */}
-  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+  <div
+  className="absolute inset-0 bg-gradient-to-r 
+             from-purple-600 via-blue-500 to-indigo-600
+             opacity-40 animate-gradient bg-200% 
+             backdrop-blur-md"
+></div>
+
 
   {/* Page Content */}
   <div className="relative z-10">
